@@ -1,8 +1,5 @@
 package mc.obliviate.bloksqliteapi;
 
-import mc.obliviate.bloksqliteapi.sqlutils.DataType;
-import mc.obliviate.bloksqliteapi.sqlutils.SQLTable;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
 import java.io.File;
@@ -11,13 +8,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class SQLManager {
+public class SQLHandler {
 
 	private static Statement statement;
 	private static Connection connection;
 	private final Plugin plugin;
 
-	public SQLManager(final Plugin plugin) {
+	public SQLHandler(final Plugin plugin) {
 		this.plugin = plugin;
 	}
 

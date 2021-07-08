@@ -1,6 +1,6 @@
 package mc.obliviate.bloksqliteapi.sqlutils;
 
-import mc.obliviate.bloksqliteapi.SQLManager;
+import mc.obliviate.bloksqliteapi.SQLHandler;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -56,7 +56,7 @@ public class SQLTable {
 
 	public SQLTable create() {
 		try {
-			SQLManager.getStatement().executeUpdate(SQLUtils.getCreateCommand(this));
+			SQLHandler.getStatement().executeUpdate(SQLUtils.getCreateCommand(this));
 			return this;
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
@@ -73,7 +73,7 @@ public class SQLTable {
 
 		try {
 			SQLUtils.debug(sql);
-			return SQLManager.getStatement().executeQuery(sql);
+			return SQLHandler.getStatement().executeQuery(sql);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -85,7 +85,7 @@ public class SQLTable {
 		SQLUtils.debug(sql);
 
 		try {
-			final PreparedStatement pstmt = SQLManager.getConnection().prepareStatement(sql);
+			final PreparedStatement pstmt = SQLHandler.getConnection().prepareStatement(sql);
 			pstmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -97,7 +97,7 @@ public class SQLTable {
 		final String sql = "DELETE FROM " + getTableName() + " WHERE " + iDField + " = '" + id + "'";
 		SQLUtils.debug(sql);
 		try {
-			final PreparedStatement pstmt = SQLManager.getConnection().prepareStatement(sql);
+			final PreparedStatement pstmt = SQLHandler.getConnection().prepareStatement(sql);
 			pstmt.executeUpdate();
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
@@ -142,7 +142,7 @@ public class SQLTable {
 		final String sql = SQLUtils.getInsertCommand(getTableName(), sqlUpdateColumn);
 		SQLUtils.debug(sql);
 		try {
-			final PreparedStatement pstmt = SQLManager.getConnection().prepareStatement(sql);
+			final PreparedStatement pstmt = SQLHandler.getConnection().prepareStatement(sql);
 			pstmt.executeUpdate();
 
 		} catch (SQLException e) {
