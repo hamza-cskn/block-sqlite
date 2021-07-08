@@ -14,29 +14,27 @@ An SQLite API to manage sqlite databases.
 
 ```
 public class MySQLManagerClass extends SQLHandler {
-	public MySQLManagerClass(BlokLogger plugin) {
-		super(plugin);
-		connect();
-	}
+    public MySQLManagerClass(BlokLogger plugin) {
+        super(plugin.getDataFolder().getAbsolutePath());
+        connect();
+    }
 
-	public void connect() {
-		super.connect("database");
-	}
+    public void connect() {
+        super.connect("database");
+    }
 
-	@Override
-	public void onConnect() {
-		Bukkit.getLogger().info("SQLite DB Connected successfully");
-		createTable();
-	}
+    @Override
+    public void onConnect() {
+        Bukkit.getLogger().info("SQLite DB Connected successfully");
+        createTable();
+    }
 
 
-	public SQLTable createTable() {
-		//table stuff
-	}
+    public SQLTable createTable() {
+        //table stuff
+    }
 
 }
-
-
 ```
 
 
