@@ -8,6 +8,7 @@ public class SQLUtils {
 	public static void debug(String msg) {
 		System.out.println(msg);
 	}
+
 	public static String getCreateCommand(final SQLTable sqlTable) {
 
 		final StringBuilder builder = (new StringBuilder("CREATE TABLE IF NOT EXISTS '")).append(sqlTable.getTableName()).append("' (");
