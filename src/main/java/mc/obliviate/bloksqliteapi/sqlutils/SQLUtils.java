@@ -1,14 +1,12 @@
 package mc.obliviate.bloksqliteapi.sqlutils;
 
-import org.bukkit.Bukkit;
-
 import java.util.Collection;
 import java.util.Map;
 
 public class SQLUtils {
 
 	public static void debug(String msg) {
-		Bukkit.getLogger().info(msg);
+		System.out.println(msg);
 	}
 
 	public static String getCreateCommand(final SQLTable sqlTable) {
