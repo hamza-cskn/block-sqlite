@@ -112,14 +112,98 @@ public class SQLTable {
 
 	public void insert(SQLUpdateColumn sqlUpdateColumn) {
 		final String sql = SQLUtils.getInsertCommand(getTableName(), sqlUpdateColumn);
-		SQLUtils.debug(sql);
-		try {
-			final PreparedStatement pstmt = SQLHandler.getConnection().prepareStatement(sql);
-			pstmt.executeUpdate();
+		SQLHandler.sqlUpdate(sql);
+	}
 
+	/**
+	 *
+	 * Returns result set ordered by 1st param field.
+	 * 2nd param limits ordered list.
+	 *
+	 * for example, if you need a leaderboard
+	 * you can use getHighest("kill", 10) method to
+	 * get top 10 player datas.
+	 *
+	 * @param fieldName field that will be ordered
+	 * @return result set of ordered list.
+	 */
+	public ResultSet getHighest(final String fieldName) {
+		return getHighest(fieldName,0);
+	}
+
+	/**
+	 *
+	 * Returns result set ordered by 1st param field.
+	 * 2nd param limits ordered list.
+	 *
+	 * for example, if you need a leaderboard
+	 * you can use getHighest("kill", 10) method to
+	 * get top 10 player datas.
+	 *
+	 * @param fieldName field that will be ordered
+	 * @return result set of ordered list.
+	 */
+	public ResultSet getHighest(final String fieldName, final int limit) {
+		final String sql = "SELECT " + fieldName + " FROM " + getTableName() + " ORDER BY " + fieldName + " DESC" + (limit > 0 ? " LIMIT " + limit : "");
+		return SQLHandler.sqlQuery(sql);
+	}
+
+	/**
+	 *
+	 * Returns result set ordered by 1st param field.
+	 * 2nd param limits ordered list.
+	 *
+	 * for example, if you need a leaderboard
+	 * you can use getHighest("kill", 10) method to
+	 * get top 10 player datas.
+	 *
+	 * @param fieldName field that will be ordered
+	 * @return result set of ordered list.
+	 */
+	public ResultSet getLowest(final String fieldName) {
+		return getLowest(fieldName,0);
+	}
+
+	/**
+	 *
+	 * Returns result set ordered by 1st param field.
+	 * 2nd param limits ordered list.
+	 *
+	 * for example, if you need a leaderboard
+	 * you can use getHighest("kill", 10) method to
+	 * get top 10 player datas.
+	 *
+	 * @param fieldName field that will be ordered
+	 * @return result set of ordered list.
+	 */
+	public ResultSet getLowest(final String fieldName, final int limit) {
+		final String sql = "SELECT " + fieldName + " FROM " + getTableName() + " ORDER BY " + fieldName + " ASC" + (limit > 0 ? " LIMIT " + limit : "");
+		return SQLHandler.sqlQuery(sql);
+	}
+
+	public Object getSingleHighest(final String fieldName) {
+		final ResultSet rs = getHighest(fieldName, 1);
+		return getSingleValue(rs, fieldName);
+	}
+
+
+	public Object getSingleLowest(final String fieldName) {
+		final ResultSet rs = getLowest(fieldName, 1);
+		return getSingleValue(rs, fieldName);
+
+	}
+
+	private Object getSingleValue(final ResultSet rs, final String fieldName) {
+		try {
+			Object result = null;
+			while (rs.next()) {
+				result = rs.getString(fieldName);
+			}
+			return result;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 }
