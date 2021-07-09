@@ -1,10 +1,7 @@
 package mc.obliviate.bloksqliteapi;
 
 import java.io.File;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class SQLHandler {
 
@@ -23,6 +20,8 @@ public class SQLHandler {
 		this.debug = debug;
 	}
 
+
+
 	public static Connection getConnection() {
 		return connection;
 	}
@@ -32,6 +31,7 @@ public class SQLHandler {
 	}
 
 	public void connect(final String databaseName) {
+
 		connection = null;
 		try {
 			final String URL = "jdbc:sqlite:" + filePath + File.separator + databaseName + ".db";

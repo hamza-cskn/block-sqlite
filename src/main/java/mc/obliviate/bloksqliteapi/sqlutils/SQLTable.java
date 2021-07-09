@@ -2,7 +2,6 @@ package mc.obliviate.bloksqliteapi.sqlutils;
 
 import mc.obliviate.bloksqliteapi.SQLHandler;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
@@ -83,33 +82,38 @@ public class SQLTable {
 	 * @return is column exist? (returns true if updated. returns false if inserted.)
 	 */
 	public boolean insertOrUpdate(SQLUpdateColumn sqlUpdateColumn) {
-		boolean exist;
-		if (exist(sqlUpdateColumn.getId())) {
+		final boolean exist = exist(sqlUpdateColumn.getId());
+		if (exist) {
 			update(sqlUpdateColumn);
-			exist = true;
 		} else {
 			insert(sqlUpdateColumn);
-			exist = false;
 		}
 		return exist;
 	}
 
 	public boolean exist(final Object whereValue) {
 		//final String sql = "SELECT * FROM " + getTableName() + " WHERE " + iDField + " = '" + whereValue.toString() + "'";
-
-		try {
-			boolean exist = false;
-			final ResultSet rs = select(whereValue);
-			while (rs.next()) {
-				exist = true;
-			}
-			return exist;
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
-		return false;
+		return getSingleValue(select(whereValue), iDField) != null;
 	}
 
+	/**
+	 * Inserts a column to the table. You need a create
+	 * SQL Update Column object to insertion because
+	 * the object will be contains all datas which will
+	 * inserted.
+	 *
+	 * Also you can not get instance of sql update column
+	 * directly. You must use createUpdate() method of table
+	 * object.
+	 *
+	 * for example, insert(sqltable.createUpdate("player_uuid").putData("kills", 20))
+	 *
+	 * Do Not Forget!
+	 * The insertion method needs all values for all fields
+	 * of table. Update method does not.
+	 *
+	 * @param sqlUpdateColumn
+	 */
 	public void insert(SQLUpdateColumn sqlUpdateColumn) {
 		final String sql = SQLUtils.getInsertCommand(getTableName(), sqlUpdateColumn);
 		SQLHandler.sqlUpdate(sql);
