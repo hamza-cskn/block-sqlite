@@ -1,11 +1,11 @@
 package mc.obliviate.bloksqliteapi.sqlutils;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class SQLUpdateColumn {
 
-	private final Map<String, String> columns = new HashMap<>();
+	private final Map<String, String> columns = new LinkedHashMap<>();
 	private final Object id;
 
 	protected SQLUpdateColumn(Object id) {
