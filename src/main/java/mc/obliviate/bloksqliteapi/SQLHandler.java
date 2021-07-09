@@ -11,9 +11,16 @@ public class SQLHandler {
 	private static Statement statement;
 	private static Connection connection;
 	private final String filePath;
+	private final boolean debug;
 
 	public SQLHandler(final String filePath) {
 		this.filePath = filePath;
+		debug = false;
+	}
+
+	public SQLHandler(final String filePath, boolean debug) {
+		this.filePath = filePath;
+		this.debug = debug;
 	}
 
 	public static Connection getConnection() {
