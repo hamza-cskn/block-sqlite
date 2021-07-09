@@ -54,4 +54,29 @@ public class SQLHandler {
 	public void onConnect() {
 
 	}
+
+	public static ResultSet sqlQuery(final String sql) {
+		System.out.println(sql);
+		try {
+			final PreparedStatement pstmt = SQLHandler.getConnection().prepareStatement(sql);
+			return pstmt.executeQuery();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		throw new IllegalStateException("Result set can not be null! SQLite API");
+	}
+
+	public static void sqlUpdate(final String sql) {
+		System.out.println(sql);
+		try {
+			final PreparedStatement pstmt = SQLHandler.getConnection().prepareStatement(sql);
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+
 }

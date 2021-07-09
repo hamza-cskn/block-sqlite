@@ -55,13 +55,8 @@ public class SQLTable {
 	}
 
 	public SQLTable create() {
-		try {
-			SQLHandler.getStatement().executeUpdate(SQLUtils.getCreateCommand(this));
-			return this;
-		} catch (SQLException throwables) {
-			throwables.printStackTrace();
-		}
-		throw new IllegalStateException("Table create has failed: " + getTableName());
+		SQLHandler.sqlUpdate(SQLUtils.getCreateCommand(this));
+		return this;
 	}
 
 	public ResultSet select() {
@@ -70,40 +65,17 @@ public class SQLTable {
 
 	public ResultSet select(Object id) {
 		final String sql = "SELECT * FROM " + getTableName() + (!(id == null || id.toString().isEmpty()) ? " WHERE " + iDField + " = '" + id + "'" : "");
-
-		try {
-			SQLUtils.debug(sql);
-			return SQLHandler.getStatement().executeQuery(sql);
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
-		throw new IllegalStateException("Result set can not be null! SQLite API");
+		return SQLHandler.sqlQuery(sql);
 	}
 
 	public void update(SQLUpdateColumn sqlUpdateColumn) {
 		final String sql = SQLUtils.getUpdateCommand(getTableName(), iDField, sqlUpdateColumn.getId(), sqlUpdateColumn);
-		SQLUtils.debug(sql);
-
-		try {
-			final PreparedStatement pstmt = SQLHandler.getConnection().prepareStatement(sql);
-			pstmt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		SQLHandler.sqlUpdate(sql);
 	}
 
 	public void delete(Object id) {
 		final String sql = "DELETE FROM " + getTableName() + " WHERE " + iDField + " = '" + id + "'";
-		SQLUtils.debug(sql);
-		try {
-			final PreparedStatement pstmt = SQLHandler.getConnection().prepareStatement(sql);
-			pstmt.executeUpdate();
-		} catch (SQLException throwables) {
-			throwables.printStackTrace();
-		}
-
-
+		SQLHandler.sqlUpdate(sql);
 	}
 
 	/**
