@@ -58,12 +58,13 @@ public class SQLTable {
 		return this;
 	}
 
-	public ResultSet select() {
-		return select(null);
+	public ResultSet selectAll() {
+		final String sql = "SELECT * FROM " + getTableName();
+		return SQLHandler.sqlQuery(sql);
 	}
 
-	public ResultSet select(Object id) {
-		final String sql = "SELECT * FROM " + getTableName() + (!(id == null || id.toString().isEmpty()) ? " WHERE " + iDField + " = '" + id + "'" : "");
+	public ResultSet select(String where, String whereValue) {
+		final String sql = "SELECT * FROM " + getTableName() + " WHERE " + where + " = '" + whereValue + "'";
 		return SQLHandler.sqlQuery(sql);
 	}
 
@@ -93,7 +94,7 @@ public class SQLTable {
 
 	public boolean exist(final Object whereValue) {
 		//final String sql = "SELECT * FROM " + getTableName() + " WHERE " + iDField + " = '" + whereValue.toString() + "'";
-		return getSingleValue(select(whereValue), iDField) != null;
+		return getSingleValue(select(iDField, whereValue.toString()), iDField) != null;
 	}
 
 	/**
