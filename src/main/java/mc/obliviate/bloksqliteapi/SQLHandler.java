@@ -5,7 +5,6 @@ import java.sql.*;
 
 public class SQLHandler {
 
-	private static Statement statement;
 	private static Connection connection;
 	private final String filePath;
 	private final boolean debug;
@@ -21,49 +20,25 @@ public class SQLHandler {
 	}
 
 
-
 	public static Connection getConnection() {
 		return connection;
 	}
 
-	public static Statement getStatement() {
-		return statement;
-	}
-
-	public void connect(final String databaseName) {
-
-		connection = null;
-		try {
-			final String URL = "jdbc:sqlite:" + filePath + File.separator + databaseName + ".db";
-			connection = DriverManager.getConnection(URL);
-			statement = connection.createStatement();
-			onConnect();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (connection != null) {
-					connection.close();
-				}
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-			}
-		}
-	}
-
-	public void onConnect() {
-
-	}
-
 	public static ResultSet sqlQuery(final String sql) {
-		System.out.println(sql);
-		try {
-			final PreparedStatement pstmt = SQLHandler.getConnection().prepareStatement(sql);
-			return pstmt.executeQuery();
+		System.out.println("SQL EXECUTING: " + sql);
 
+		ResultSet rs = null;
+		try {
+			final Statement statement = connection.createStatement();
+			System.out.println("TRING: " + sql);
+			rs = statement.executeQuery(sql);
+			System.out.println("SUCCESS: " + sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
+
 		}
+		if (rs != null)
+			return rs;
 		throw new IllegalStateException("Result set can not be null! SQLite API");
 	}
 
@@ -72,7 +47,7 @@ public class SQLHandler {
 		try {
 			final PreparedStatement pstmt = SQLHandler.getConnection().prepareStatement(sql);
 			pstmt.executeUpdate();
-
+			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
