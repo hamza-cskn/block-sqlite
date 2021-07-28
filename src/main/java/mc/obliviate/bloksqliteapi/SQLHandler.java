@@ -46,8 +46,7 @@ public class SQLHandler {
 		System.out.println(sql);
 		try {
 			final PreparedStatement pstmt = SQLHandler.getConnection().prepareStatement(sql);
-			pstmt.executeUpdate();
-			pstmt.close();
+			pstmt.executeUpdate();e			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
