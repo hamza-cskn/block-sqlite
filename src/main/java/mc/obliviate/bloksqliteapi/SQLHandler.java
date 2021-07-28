@@ -53,5 +53,32 @@ public class SQLHandler {
 		}
 	}
 
+	public void connect(final String databaseName) {
+
+		connection = null;
+		try {
+
+			Class.forName("org.sqlite.JDBC");
+			final String URL = "jdbc:sqlite:" + filePath + File.separator + databaseName + ".db";
+
+			connection = DriverManager.getConnection(URL);
+			onConnect();
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void onConnect() {
+
+	}
+
+	public void disconnect() {
+		try {
+			connection.close();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+	}
+
 
 }
