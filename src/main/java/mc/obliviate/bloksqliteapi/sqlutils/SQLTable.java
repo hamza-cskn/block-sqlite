@@ -1,5 +1,6 @@
 package mc.obliviate.bloksqliteapi.sqlutils;
 
+import com.sun.istack.internal.Nullable;
 import mc.obliviate.bloksqliteapi.SQLHandler;
 
 import java.sql.ResultSet;
@@ -102,13 +103,13 @@ public class SQLTable {
 	 * SQL Update Column object to insertion because
 	 * the object will be contains all datas which will
 	 * inserted.
-	 *
+	 * <p>
 	 * Also you can not get instance of sql update column
 	 * directly. You must use createUpdate() method of table
 	 * object.
-	 *
+	 * <p>
 	 * for example, insert(sqltable.createUpdate("player_uuid").putData("kills", 20))
-	 *
+	 * <p>
 	 * Do Not Forget!
 	 * The insertion method needs all values for all fields
 	 * of table. Update method does not.
@@ -186,21 +187,21 @@ public class SQLTable {
 		return SQLHandler.sqlQuery(sql);
 	}
 
-	public Object getSingleHighest(final String fieldName) {
+	public String getSingleHighest(final String fieldName) {
 		final ResultSet rs = getHighest(fieldName, 1);
 		return getSingleValue(rs, fieldName);
 	}
 
 
-	public Object getSingleLowest(final String fieldName) {
+	public String getSingleLowest(final String fieldName) {
 		final ResultSet rs = getLowest(fieldName, 1);
 		return getSingleValue(rs, fieldName);
 
 	}
 
-	private Object getSingleValue(final ResultSet rs, final String fieldName) {
+	private String getSingleValue(final ResultSet rs, final String fieldName) {
 		try {
-			Object result = null;
+			String result = null;
 			while (rs.next()) {
 				result = rs.getString(fieldName);
 			}
