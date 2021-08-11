@@ -41,7 +41,6 @@ public class SQLTable {
 		return columns.size();
 	}
 
-
 	protected List<String> getColumnNames() {
 		return new ArrayList(columns.keySet());
 	}
@@ -64,8 +63,43 @@ public class SQLTable {
 		return SQLHandler.sqlQuery(sql);
 	}
 
-	public ResultSet select(String where, String whereValue) {
-		final String sql = "SELECT * FROM " + getTableName() + " WHERE " + where + " = '" + whereValue + "'";
+	@Nullable
+	public String getString(String idValue, String column) {
+		final String sql = "SELECT " + column + " FROM " + getTableName() + " WHERE " + iDField + " = '" + idValue + "'";
+		final ResultSet rs = SQLHandler.sqlQuery(sql);
+		String result = null;
+		try {
+			while (rs.next()) {
+				result = rs.getString(column);
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return result;
+	}
+
+	@Nullable
+	public Integer getInteger(String idValue, String column) {
+		final String sql = "SELECT " + column + " FROM " + getTableName() + " WHERE " + iDField + " = '" + idValue + "'";
+		final ResultSet rs = SQLHandler.sqlQuery(sql);
+		Integer result = null;
+		try {
+			while (rs.next()) {
+				result = rs.getInt(column);
+
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return result;
+	}
+
+	public ResultSet select(String idValue) {
+		return select(iDField, idValue);
+	}
+
+	public ResultSet select(String column, String columnValue) {
+		final String sql = "SELECT * FROM " + getTableName() + " WHERE " + column + " = '" + columnValue + "'";
 		return SQLHandler.sqlQuery(sql);
 	}
 
