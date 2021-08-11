@@ -6,17 +6,17 @@ import java.sql.*;
 public class SQLHandler {
 
 	private static Connection connection;
+	private static boolean debug = false;
 	private final String filePath;
-	private final boolean debug;
 
 	public SQLHandler(final String filePath) {
 		this.filePath = filePath;
 		debug = false;
 	}
 
-	public SQLHandler(final String filePath, boolean debug) {
+	public SQLHandler(final String filePath, boolean debugMode) {
 		this.filePath = filePath;
-		this.debug = debug;
+		debug = debugMode;
 	}
 
 
@@ -25,14 +25,17 @@ public class SQLHandler {
 	}
 
 	public static ResultSet sqlQuery(final String sql) {
-		System.out.println("SQL EXECUTING: " + sql);
+		if (debug)
+			System.out.println("SQL QUERY: " + sql);
 
 		ResultSet rs = null;
 		try {
 			final Statement statement = connection.createStatement();
-			System.out.println("TRING: " + sql);
+			if (debug)
+				System.out.println("EXECUTING: " + sql);
 			rs = statement.executeQuery(sql);
-			System.out.println("SUCCESS: " + sql);
+			if (debug)
+				System.out.println("SUCCESS: " + sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 
@@ -43,11 +46,14 @@ public class SQLHandler {
 	}
 
 	public static void sqlUpdate(final String sql) {
-		System.out.println(sql);
+		if (debug)
+			System.out.println("SQL UPDATE: " + sql);
 		try {
 			final PreparedStatement pstmt = SQLHandler.getConnection().prepareStatement(sql);
 			pstmt.executeUpdate();
 			pstmt.close();
+			if (debug)
+				System.out.println("SUCCESS: " + sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
