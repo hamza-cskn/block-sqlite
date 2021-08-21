@@ -58,11 +58,6 @@ public class SQLTable {
 		return this;
 	}
 
-	public ResultSet selectAll() {
-		final String sql = "SELECT * FROM " + getTableName();
-		return SQLHandler.sqlQuery(sql);
-	}
-
 	@Nullable
 	public String getString(String idValue, String column) {
 		final String sql = "SELECT " + column + " FROM " + getTableName() + " WHERE " + iDField + " = '" + idValue + "'";
@@ -92,6 +87,27 @@ public class SQLTable {
 			ex.printStackTrace();
 		}
 		return result;
+	}
+
+	@Nullable
+	public Boolean getBoolean(String idValue, String column) {
+		final String sql = "SELECT " + column + " FROM " + getTableName() + " WHERE " + iDField + " = '" + idValue + "'";
+		final ResultSet rs = SQLHandler.sqlQuery(sql);
+		Boolean result = null;
+		try {
+			while (rs.next()) {
+				result = rs.getBoolean(column);
+
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return result;
+	}
+
+	public ResultSet selectAll() {
+		final String sql = "SELECT * FROM " + getTableName();
+		return SQLHandler.sqlQuery(sql);
 	}
 
 	public ResultSet select(String idValue) {
