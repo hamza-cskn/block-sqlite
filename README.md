@@ -2,7 +2,8 @@
 [![](https://jitpack.io/v/Obliviated/BlokSQLiteAPI.svg)](https://jitpack.io/#Obliviated/BlokSQLiteAPI)
 
 
-```    <repository>
+```    
+    <repository>
         <id>jitpack.io</id>
         <url>https://jitpack.io</url>
     </repository>
