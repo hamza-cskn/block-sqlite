@@ -1,4 +1,5 @@
 
+[![](https://jitpack.io/v/Obliviated/BlokSQLiteAPI.svg)](https://jitpack.io/#Obliviated/BlokSQLiteAPI)
 
 
 # BlokSQLiteAPI
