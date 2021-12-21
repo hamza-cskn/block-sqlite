@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class SQLHandler {
 
-	private static Connection connection;
+	private static Connection connection = null;
 	private static boolean debug = false;
 	private final String filePath;
 
@@ -60,7 +60,6 @@ public class SQLHandler {
 	}
 
 	public void connect(final String databaseName) {
-
 		connection = null;
 		try {
 
@@ -68,7 +67,9 @@ public class SQLHandler {
 			final String URL = "jdbc:sqlite:" + filePath + File.separator + databaseName + ".db";
 
 			connection = DriverManager.getConnection(URL);
-			onConnect();
+			if (connection != null) {
+				onConnect();
+			}
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -79,12 +80,22 @@ public class SQLHandler {
 	}
 
 	public void disconnect() {
+		if (connection == null) return;
 		try {
 			connection.close();
-		} catch (SQLException throwables) {
+			connection = null;
+			onDisconnect();
+		} catch (final SQLException throwables) {
 			throwables.printStackTrace();
 		}
 	}
 
+	public void onDisconnect() {
+
+	}
+
+	public boolean isConnected() {
+		return connection != null;
+	}
 
 }
