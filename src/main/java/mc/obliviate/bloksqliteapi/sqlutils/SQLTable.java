@@ -1,6 +1,5 @@
 package mc.obliviate.bloksqliteapi.sqlutils;
 
-import com.sun.istack.internal.Nullable;
 import mc.obliviate.bloksqliteapi.SQLHandler;
 
 import java.sql.ResultSet;
@@ -58,7 +57,6 @@ public class SQLTable {
 		return this;
 	}
 
-	@Nullable
 	public String getString(String idValue, String column) {
 		final String sql = "SELECT " + column + " FROM " + getTableName() + " WHERE " + iDField + " = '" + idValue + "'";
 		final ResultSet rs = SQLHandler.sqlQuery(sql);
@@ -73,7 +71,6 @@ public class SQLTable {
 		return result;
 	}
 
-	@Nullable
 	public Integer getInteger(String idValue, String column) {
 		final String sql = "SELECT " + column + " FROM " + getTableName() + " WHERE " + iDField + " = '" + idValue + "'";
 		final ResultSet rs = SQLHandler.sqlQuery(sql);
@@ -89,7 +86,6 @@ public class SQLTable {
 		return result;
 	}
 
-	@Nullable
 	public Boolean getBoolean(String idValue, String column) {
 		final String sql = "SELECT " + column + " FROM " + getTableName() + " WHERE " + iDField + " = '" + idValue + "'";
 		final ResultSet rs = SQLHandler.sqlQuery(sql);
