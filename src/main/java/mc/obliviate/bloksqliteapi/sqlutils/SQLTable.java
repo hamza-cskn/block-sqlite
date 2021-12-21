@@ -130,6 +130,21 @@ public class SQLTable {
 	}
 
 	/**
+	 * @param fieldName integer field
+	 * @param amount increment amount
+	 */
+	public void increaseValue(final String idValue, final String fieldName, final int amount) {
+		SQLHandler.sqlUpdate("UPDATE " + getTableName() + " SET " + fieldName + " = " + fieldName + " + " + amount + " WHERE " + iDField + " = '" + idValue + "'");
+	}
+	/**
+	 * @param fieldName integer field
+	 * @param amount decrement amount
+	 */
+	public void decreaseValue(final String idValue, final String fieldName, final int amount) {
+		SQLHandler.sqlUpdate("UPDATE " + getTableName() + " SET " + fieldName + " = " + fieldName + " - " + amount + " WHERE " + iDField + " = '" + idValue + "'");
+	}
+
+	/**
 	 * @param sqlUpdateColumn
 	 * @return is column exist? (returns true if updated. returns false if inserted.)
 	 */
@@ -172,10 +187,9 @@ public class SQLTable {
 	}
 
 	/**
-	 *
 	 * Returns result set ordered by 1st param field.
 	 * 2nd param limits ordered list.
-	 *
+	 * <p>
 	 * for example, if you need a leaderboard
 	 * you can use getHighest("kill", 10) method to
 	 * get top 10 player datas.
@@ -184,14 +198,13 @@ public class SQLTable {
 	 * @return result set of ordered list.
 	 */
 	public ResultSet getHighest(final String fieldName) {
-		return getHighest(fieldName,0);
+		return getHighest(fieldName, 0);
 	}
 
 	/**
-	 *
 	 * Returns result set ordered by 1st param field.
 	 * 2nd param limits ordered list.
-	 *
+	 * <p>
 	 * for example, if you need a leaderboard
 	 * you can use getHighest("kill", 10) method to
 	 * get top 10 player datas.
@@ -205,10 +218,9 @@ public class SQLTable {
 	}
 
 	/**
-	 *
 	 * Returns result set ordered by 1st param field.
 	 * 2nd param limits ordered list.
-	 *
+	 * <p>
 	 * for example, if you need a leaderboard
 	 * you can use getHighest("kill", 10) method to
 	 * get top 10 player datas.
@@ -217,14 +229,13 @@ public class SQLTable {
 	 * @return result set of ordered list.
 	 */
 	public ResultSet getLowest(final String fieldName) {
-		return getLowest(fieldName,0);
+		return getLowest(fieldName, 0);
 	}
 
 	/**
-	 *
 	 * Returns result set ordered by 1st param field.
 	 * 2nd param limits ordered list.
-	 *
+	 * <p>
 	 * for example, if you need a leaderboard
 	 * you can use getHighest("kill", 10) method to
 	 * get top 10 player datas.
