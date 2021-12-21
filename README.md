@@ -1,5 +1,19 @@
 
+[![](https://jitpack.io/v/Obliviated/BlokSQLiteAPI.svg)](https://jitpack.io/#Obliviated/BlokSQLiteAPI)
 
+
+```    
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+
+    <dependency>
+        <groupId>com.github.Obliviated</groupId>
+        <artifactId>BlokSQLiteAPI</artifactId>
+        <version>1.0.5</version>
+    </dependency>
+```
 
 # BlokSQLiteAPI
 An SQLite API to manage sqlite databases.
