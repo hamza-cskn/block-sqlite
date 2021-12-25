@@ -181,16 +181,20 @@ public void test(SQLTable sqltable) {
 ```
 
 Fast getter methods.
-```            playerDataTable.getBoolean(uuid.toString(),"isEnabled");
-            playerDataTable.getInteger(uuid.toString(),"skywarsKills");
-            playerDataTable.getString(uuid.toString(),"displayName");```
+```
+playerDataTable.getBoolean(uuid.toString(),"isEnabled");
+playerDataTable.getInteger(uuid.toString(),"skywarsKills");
+playerDataTable.getString(uuid.toString(),"displayName");
+```
 
 Gets boolean value of "isEnabled" column of row that has "uuid.toString()" value (in the id column).
 
 
 Increase or decrease value.
-```playerDataTable.increaseValue(uuid.toString(), "points", 10)
+```
+playerDataTable.increaseValue(uuid.toString(), "points", 10)
 playerDataTable.increaseValue(uuid.toString(), "kills", 1)
 
-playerDataTable.decreaseValue(uuid.toString(), "money", 300)```
+playerDataTable.decreaseValue(uuid.toString(), "money", 300)
+```
 
