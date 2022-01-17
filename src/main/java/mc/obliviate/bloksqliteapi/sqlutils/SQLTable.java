@@ -209,7 +209,7 @@ public class SQLTable {
 	 * @return result set of ordered list.
 	 */
 	public ResultSet getHighest(final String fieldName, final int limit) {
-		final String sql = "SELECT " + fieldName + " FROM " + getTableName() + " ORDER BY " + fieldName + " DESC" + (limit > 0 ? " LIMIT " + limit : "");
+		final String sql = "SELECT * FROM " + getTableName() + " ORDER BY " + fieldName + " DESC" + (limit > 0 ? " LIMIT " + limit : "");
 		return SQLHandler.sqlQuery(sql);
 	}
 
@@ -240,7 +240,7 @@ public class SQLTable {
 	 * @return result set of ordered list.
 	 */
 	public ResultSet getLowest(final String fieldName, final int limit) {
-		final String sql = "SELECT " + fieldName + " FROM " + getTableName() + " ORDER BY " + fieldName + " ASC" + (limit > 0 ? " LIMIT " + limit : "");
+		final String sql = "SELECT * FROM " + getTableName() + " ORDER BY " + fieldName + " ASC" + (limit > 0 ? " LIMIT " + limit : "");
 		return SQLHandler.sqlQuery(sql);
 	}
 
