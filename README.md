@@ -11,7 +11,7 @@
     <dependency>
         <groupId>com.github.Obliviated</groupId>
         <artifactId>BlokSQLiteAPI</artifactId>
-        <version>1.0.6-d</version>
+        <version>1.0.7-a</version>
     </dependency>
 ```
 
