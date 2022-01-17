@@ -30,10 +30,10 @@ public class SQLHandler {
 
 		ResultSet rs = null;
 		try {
-			final PreparedStatement pstmt = SQLHandler.connection.prepareStatement(sql);
+			final Statement statement = connection.createStatement();
 			if (debug)
 				System.out.println("EXECUTING: " + sql);
-			rs = pstmt.executeQuery();
+			rs = statement.executeQuery(sql);
 			if (debug)
 				System.out.println("SUCCESS: " + sql);
 		} catch (SQLException e) {
