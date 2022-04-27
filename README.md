@@ -19,7 +19,7 @@
 Allows you to manage your SQLite databases without hard coding.
 
 ## Why should you use an API?
-Hard code means undevelopable code. Using APIs saves your code from being hard code (most of time). Purpose of this API is, completely save your code from hard coded database classes. The hard code problem is one of most dangerous thing in software engineering.
+Hard code means undevelopable code. Using APIs saves your code from being hard code (most of the time). The purpose of this API is, completely save your code from hard-coded database classes. The hard code problem is one of the most dangerous things in software engineering.
 
 ## How to connect database
 1. Create SQLHandler class of your plugin.
