@@ -2,7 +2,7 @@
 [![](https://jitpack.io/v/Obliviated/BlokSQLiteAPI.svg)](https://jitpack.io/#Obliviated/BlokSQLiteAPI)
 
 
-```    
+```maven    
     <repository>
         <id>jitpack.io</id>
         <url>https://jitpack.io</url>
@@ -22,7 +22,7 @@
 4. Override onConnect() method to use on connect event. We need it to call a create table method.
 5. Create a createTable() method and create your table. (I explained below)
 
-```
+```java
 public class MySQLManagerClass extends SQLHandler {
     public MySQLManagerClass(BlokLogger plugin) {
         super(plugin.getDataFolder().getAbsolutePath());
@@ -59,7 +59,7 @@ You can specify this properties too.
 
 
 
-```
+```java
 public SQLTable createTable() {
 
   final SQLTable sqlTable = new SQLTable("school3", "no")
@@ -85,7 +85,7 @@ Let's test our database. The mission is "Put a student named 'Hamza', if the stu
 
 
 
-```
+```java
 public void test(SQLTable sqltable) {
 
   int id = 306;
@@ -101,7 +101,7 @@ public void test(SQLTable sqltable) {
 
 
 
-```
+```java
 public void test(SQLTable sqltable) {
 
   int id = 306;
@@ -118,7 +118,7 @@ public void test(SQLTable sqltable) {
 
 
 
-```
+```java
 public void test(SQLTable sqltable) {
 
   int id = 306;
@@ -133,7 +133,7 @@ public void test(SQLTable sqltable) {
 
 5. That is test so i must show you all things. Next mission is: Delete data you putted.
 
-```
+```java
 public void test(SQLTable sqltable) {
 
   int id = 306;
@@ -151,7 +151,7 @@ public void test(SQLTable sqltable) {
 
 6. Perfect. Also there is shorter a way too. But that way only puts student named 'Hamza'. Does not changes names. But if you want to know is updated or inserted, the insertOrUpdate() method returns true if updated.
 
-```
+```java
 public void test(SQLTable sqltable) {
 
   int id = 306;
@@ -166,7 +166,7 @@ public void test(SQLTable sqltable) {
 7. If you want to get result set
 
   
-```
+```java
 public void test(SQLTable sqltable) {
 
   int id = 306;
@@ -177,7 +177,7 @@ public void test(SQLTable sqltable) {
 ```
 
 Fast getter methods.
-```
+```java
 playerDataTable.getBoolean(uuid.toString(),"isEnabled");
 playerDataTable.getInteger(uuid.toString(),"skywarsKills");
 playerDataTable.getString(uuid.toString(),"displayName");
@@ -187,7 +187,7 @@ Gets boolean value of "isEnabled" column of row that has "uuid.toString()" value
 
 
 Increase or decrease value.
-```
+```java
 playerDataTable.increaseValue(uuid.toString(), "points", 10)
 playerDataTable.increaseValue(uuid.toString(), "kills", 1)
 
