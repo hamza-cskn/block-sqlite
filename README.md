@@ -15,7 +15,7 @@
     </dependency>
 ```
 
-## BlokSQLiteAPI
+# BlokSQLiteAPI
 Allows you to manage your SQLite databases without hard coding.
 
 ## Why should you use an API?
