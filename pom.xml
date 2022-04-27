@@ -7,7 +7,7 @@
     <groupId>mc.obliviate.bloksqliteapi</groupId>
     <artifactId>BlokSQLiteAPI</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <description>An SQLite API to manage sqlite databases.</description>
+    <description>A SQLite API to manage sqlite databases.</description>
     <name>BlokSQLiteAPI</name>
 
     <properties>
