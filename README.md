@@ -16,7 +16,10 @@
 ```
 
 ## BlokSQLiteAPI
-Makes your databases efficient. Allows you to manage your sqlite databases without hard coding.
+Allows you to manage your SQLite databases without hard coding.
+
+## Why should you use an API?
+Hard code means undevelopable code. Using APIs saves your code from being hard code (most of time). Purpose of this API is, completely save you from hard coded database classes. The hard code problem is one of most dangerous thing in software engineering.
 
 ## How to connect database
 1. Create SQLHandler class of your plugin.
