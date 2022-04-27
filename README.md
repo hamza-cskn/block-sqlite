@@ -15,6 +15,9 @@
     </dependency>
 ```
 
+## BlokSQLiteAPI
+Makes your databases efficient. Allows you to manage your sqlite databases without hard code.
+
 ## How to connect database
 1. Create SQLHandler class of your plugin.
 2. Extend mc.obliviate.bloksqliteapi.SQLHandler
