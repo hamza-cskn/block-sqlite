@@ -16,7 +16,7 @@
 ```
 
 ## BlokSQLiteAPI
-Makes your databases efficient. Allows you to manage your sqlite databases without hard code.
+Makes your databases efficient. Allows you to manage your sqlite databases without hard coding.
 
 ## How to connect database
 1. Create SQLHandler class of your plugin.
