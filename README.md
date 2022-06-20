@@ -18,6 +18,8 @@
 # BlokSQLiteAPI
 Allows you to manage your SQLite databases without hard coding.
 
+This library is indepent from any Bukkit/Spigot library.
+
 ## Why should you use an API?
 Hard code means undevelopable code. Using APIs saves your code from being hard code (most of the time). The purpose of this API is, completely save your code from hard-coded database classes. The hard code problem is one of the most dangerous things in software engineering.
 
