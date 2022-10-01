@@ -15,6 +15,15 @@
     </dependency>
 ```
 
+```gradle
+repositories {
+	maven { url 'https://jitpack.io' }
+	}
+dependencies {
+	implementation 'com.github.Obliviated:BlokSQLiteAPI:Tag'
+	}
+```
+
 # BlokSQLiteAPI
 Allows you to manage your SQLite databases without hard coding.
 
