@@ -13,7 +13,6 @@ public class SQLField {
 		this.isPrimaryKey = isPrimaryKey;
 	}
 
-
 	protected DataType getDataType() {
 		return this.dataType;
 	}

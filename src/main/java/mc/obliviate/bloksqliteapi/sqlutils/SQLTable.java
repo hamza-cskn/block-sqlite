@@ -156,7 +156,7 @@ public class SQLTable {
 
 	public boolean exist(final Object whereValue) {
 		//final String sql = "SELECT * FROM " + getTableName() + " WHERE " + iDField + " = '" + whereValue.toString() + "'";
-		return getSingleValue(select(iDField, whereValue.toString()), iDField) != null;
+		return getSingleValue(select(iDField, String.valueOf(whereValue)), iDField) != null;
 	}
 
 	/**

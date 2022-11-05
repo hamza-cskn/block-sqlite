@@ -13,7 +13,7 @@ public class SQLUpdateColumn {
 	}
 
 	public SQLUpdateColumn putData(final String where, final Object newValue) {
-		columns.put(where,newValue.toString());
+		columns.put(where,String.valueOf(newValue));
 		return this;
 	}
 
