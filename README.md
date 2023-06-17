@@ -10,7 +10,8 @@
 
     <dependency>
         <groupId>com.github.Obliviated</groupId>
-        <artifactId>BlokSQLiteAPI</artifactId>
+        <artifactId>
+	iteAPI</artifactId>
         <version>1.0.7-a</version>
     </dependency>
 ```
@@ -24,7 +25,7 @@ dependencies {
 	}
 ```
 
-# BlokSQLiteAPI
+# block-sqlite
 Allows you to manage your SQLite databases without hard coding.
 
 This library is indepent from any Bukkit/Spigot library.
